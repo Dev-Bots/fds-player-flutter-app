@@ -1,0 +1,16 @@
+{
+
+    "account": {
+        "id": 1,
+        "first_name": "John",
+        "last_name": "Doe",
+        "full_name": "John Doe",
+        "user_name": "johndoe",
+        "gender": "M",
+        "profile_picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/330px-Image_created_with_a_mobile_phone.png",
+        "DOB": "12/12/22",
+        "email": "abc@gmail.com",
+        "phone_number": "+251912345678",
+        "address": "Addis Ababa, Ethiopia"
+    }
+}
