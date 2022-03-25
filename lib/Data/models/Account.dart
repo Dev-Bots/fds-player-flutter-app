@@ -20,3 +20,18 @@ class Account extends Equatable {
     required this.address,
     // this.registeredUsers,
   });
+
+  final int? accountID;
+
+  final String? firstName;
+  final String? lastName;
+  final String? fullName;
+  final String? userName;
+  final String? gender;
+  // final profilePicture;
+  final String? dob;
+  final String? email;
+  final int? phoneNumber;
+  final String? address;
+
+  // final List? registeredUsers;
