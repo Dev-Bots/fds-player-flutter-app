@@ -19,3 +19,14 @@ class AccountLoaded extends AccountState {
   List<Object> get props => [user];
 }
 
+class AccountFailed extends AccountState {
+  final String error;
+
+  const AccountFailed({required this.error});
+
+  @override
+  List<Object> get props => [error];
+
+  @override
+  String toString() => 'AccountFailure { error: $error }';
+}
