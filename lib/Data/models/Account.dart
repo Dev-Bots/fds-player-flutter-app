@@ -35,3 +35,37 @@ class Account extends Equatable {
   final String? address;
 
   // final List? registeredUsers;
+ @override
+  List<Object?> get props => [
+        accountID,
+        firstName,
+        lastName,
+        fullName,
+        userName,
+        gender,
+        // profilePicture,
+        dob,
+        email,
+        phoneNumber,
+        address,
+        // createdEvents,
+      ];
+
+  factory Account.fromJson(Map<String, dynamic> json) => Account(
+        firstName: json['firstName'],
+        lastName: json['lastName'],
+        fullName: json['fullName'],
+        userName: json['userName'],
+        gender: json['gender'],
+        // profilePicture: json['profile_picture'],
+        dob: json['dob'],
+        email: json['email'],
+        phoneNumber: json['phoneNumber'],
+        address: json['address'],
+
+        // createdEvents: json['created_events'] != Null
+        //     ? json['registered_clients']
+        //         .map((account) => Event.fromJson(account))
+        //         .toList()
+        //     : []
+      );
