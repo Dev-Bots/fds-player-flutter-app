@@ -69,3 +69,23 @@ class Account extends Equatable {
         //         .toList()
         //     : []
       );
+       Map<String, dynamic> toJson() => {
+        'id': accountID, //if Api accepts id, then use it
+        'first_name': firstName,
+        'last_name': lastName,
+        'full_name': fullName,
+        'user_name': userName,
+        'gender': gender,
+        // 'profile_picture': profilePicture,
+        'DOB': dob,
+        'email': email,
+        'phone_number': phoneNumber,
+        'address': address,
+
+        // 'registered_clients':
+        //     registeredUsers!.map((account) => account.toJson()).toList()
+      };
+  // @override
+  // String toString() =>
+  //     'Agent { first_name: $firstName, last_name: $lastName, fullname: $fullName, address: $address, DOB: $dob}';
+}
