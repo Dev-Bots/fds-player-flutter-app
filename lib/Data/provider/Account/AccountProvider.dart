@@ -31,3 +31,42 @@ class AccountDataProvider {
       throw Exception('Failed to load accounts');
     }
   }
+ Future getCurrentUser() async {
+    print('getCurrentUser');
+  }
+}
+
+
+  // Future getAccounts() async {
+  //   print(_baseUrl);
+  //   final response = await httpClient.get(
+  //     Uri.http(_baseUrl, '/api/users/'),
+  //     headers: <String, String>{
+  //       'Content-Type': 'application/json; charset=UTF-8',
+  //       // 'token': await getToken()
+  //     },
+  //   );
+
+  //   if (response.statusCode == 200) {
+  //     var data = jsonDecode(response.body);
+  //     print(data);
+
+  //     var accounts = data.map((account) => Account.fromJson(account)).toList();
+  //     return accounts;
+
+  // return Account.fromJson(json.decode(data));
+
+  // final acoo = data.map<String>((e) => e['firstName'] as String).toList();
+
+  // print(data.map((e) => e['firstName']));
+  // print(data.map((e) => e['lastName']));
+  // print(data.map((e) => e['userName']));
+  // print(data.map((e) => e['gender']));
+  // print(data.map((e) => e['email']));
+  // print(data.map((e) => e['phoneNumber']));
+  // print(data.map((e) => e['address']));
+
+  //   } else {
+  //     throw Exception("Can not find transaction.");
+  //   }
+  // }
