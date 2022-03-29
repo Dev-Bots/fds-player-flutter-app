@@ -67,3 +67,20 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+class NotificationButton extends StatelessWidget {
+  const NotificationButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        iconSize: 30,
+        onPressed: () {},
+        icon: const Icon(
+          Icons.notifications_none,
+          // color: Colors.grey.shade400,
+          color: Colors.black,
+        ));
+  }
+}
