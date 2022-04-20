@@ -1,31 +1,34 @@
 import 'package:bloc/bloc.dart';
 import 'package:dev_player_fds/Data/repository/repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'account_event.dart';
 part 'account_state.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
-  final AccountRepository _accountRepository;
+  final AccountRepository accountRepository = AccountRepository();
 
-  AccountBloc(this._accountRepository) : super(AccountLoading()) {
+  final prefs = SharedPreferences.getInstance();
+
+  AccountBloc() : super(AccountLoading()) {
     on<GetMyAccount>((event, emit) async {
-      print('event dispatched');
-      var user = await _accountRepository.getAllAccounts();
-      print('returned here');
+      emit(AccountLoading());
+      var user = await accountRepository.getCurrentUser();
+
       if (user != null) {
-        print('user is not null');
         emit(AccountLoaded(user: user));
       } else {
         emit(const AccountFailed(error: "Failed to load."));
       }
     });
-    on<GetOtherAccounts>((event, emit) async {
-      var user = await _accountRepository.getCurrentUser();
+    on<GetMyLocalAccount>((event, emit) async {
+      emit(AccountLocalLoading());
+      var user = await accountRepository.getLocalAccount();
       if (user != null) {
-        emit(AccountLoaded(user: user));
+        emit(AccountLocalLoaded(user: user));
       } else {
-        emit(const AccountFailed(error: "Failed to load."));
+        emit(const AccountLocalFailed(error: "Failed to load."));
       }
     });
   }
