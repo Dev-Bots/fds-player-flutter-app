@@ -30,3 +30,27 @@ class AccountFailed extends AccountState {
   @override
   String toString() => 'AccountFailure { error: $error }';
 }
+
+// ========================= Get Local Account =====================================
+
+class AccountLocalLoading extends AccountState {}
+
+class AccountLocalLoaded extends AccountState {
+  final user;
+
+  const AccountLocalLoaded({required this.user});
+  @override
+  List<Object> get props => [user];
+}
+
+class AccountLocalFailed extends AccountState {
+  final String error;
+
+  const AccountLocalFailed({required this.error});
+
+  @override
+  List<Object> get props => [error];
+
+  @override
+  String toString() => 'AccountFailure { error: $error }';
+}

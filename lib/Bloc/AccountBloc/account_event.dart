@@ -8,11 +8,13 @@ abstract class AccountEvent extends Equatable {
 }
 
 class GetMyAccount extends AccountEvent {
+  // final int userId;
+  // const GetMyAccount({required this.userId});
   @override
   List<Object> get props => [];
 }
 
-class GetOtherAccounts extends AccountEvent {
+class GetMyLocalAccount extends AccountEvent {
   @override
   List<Object> get props => [];
 }
