@@ -1,25 +1,25 @@
-
 import 'package:dev_player_fds/Data/models/models.dart';
-import 'package:dev_player_fds/Data/provider/Account/AccountProvider.dart';
 import 'package:dev_player_fds/Data/provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class AccountRepository {
-  final AccountDataProvider accountDataProvider;
+  final AccountDataProvider accountDataProvider = AccountDataProvider();
 
-  AccountRepository({required this.accountDataProvider});
-
-  Future getAllAccounts() async {
-    return await accountDataProvider.getAccounts();
-  }
-  // Future getAllAccounts() async {
-  //   Account data = await accountDataProvider.getAccounts();
-  //   List accountJsonList = data.props; // data.props is a list of json objects
-  //   var accounts =
-  //       accountJsonList.map((account) => Account.fromJson(account)).toList();
-  //   return accounts;
-  // }
+  AccountRepository();
 
   Future getCurrentUser() async {
-    return await accountDataProvider.getCurrentUser();
+    final prefs = await SharedPreferences.getInstance();
+
+    final user = prefs.getString('user');
+
+    final id = jsonDecode((prefs.getString('user')).toString())['id'];
+    print('REPOOOOOOOO' + (id).toString());
+
+    return await accountDataProvider.getCurrentUser(id);
+  }
+
+  Future getLocalAccount() async {
+    return await accountDataProvider.getLocalAccount();
   }
 }
