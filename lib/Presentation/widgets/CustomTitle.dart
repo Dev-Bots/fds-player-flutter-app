@@ -14,4 +14,3 @@ class CustomTitle extends StatelessWidget {
         ));
   }
 }
-

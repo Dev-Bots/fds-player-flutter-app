@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import '../../Bloc/bloc.dart';
 import '../../Data/repository/repository.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class AttendedEventsPage extends StatelessWidget {
+  AttendedEventsPage({Key? key}) : super(key: key);
 
-  final repo = EventRepository();
+  // final repo = EventRepository(eventDataProvider: EventDataProvider());
 
   @override
   Widget build(BuildContext context) {
@@ -28,44 +28,43 @@ class HomePage extends StatelessWidget {
         actions: const [
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: NotificationButton(),
+            child: SomeActionButton(),
           )
         ],
-        title: CustomTitle('Football Drafting System'),
+        title: CustomTitle('Attended Events'),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
 
-      body: BlocProvider(
-        create: (context) => EventBloc()..add(GetAllEvents()),
-        child: BlocBuilder<EventBloc, EventState>(
-          builder: (context, state) {
-            if (state is EventsLoading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is EventsLoaded) {
-              return SafeArea(
-                  child: Column(
-                children: [
-                  const SearchBar(),
-                  Expanded(
-                    child: EventList(),
-                  )
-                ],
-              ));
-            } else if (state is EventsFailed) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else {
-              print('jojojojojojojo $state');
-              return const Center(
-                child: Text('Failed to load events'),
-              );
-            }
-          },
-        ),
+      body: Center(
+        child: Text('Attended Events'),
       ),
+
+      // body: BlocProvider(
+      //   create: (context) => EventBloc(repo)..add(GetAllEvents()),
+      //   child: BlocBuilder<EventBloc, EventState>(
+      //     builder: (context, state) {
+      //       if (state is EventsLoading) {
+      //         return Center(
+      //           child: CircularProgressIndicator(),
+      //         );
+      //       } else if (state is EventsLoaded) {
+      //         return SafeArea(
+      //             child: Column(
+      //           children: [
+      //             const SearchBar(),
+      //             Expanded(
+      //               child: EventList(),
+      //             )
+      //           ],
+      //         ));
+      //       } else {
+      //         return const Center(
+      //           child: Text('Failed to load events'),
+      //         );
+      //       }
+      //     },
+      //   ),
+      // ),
 
       // child: Column(
       //   children: [
@@ -90,8 +89,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class NotificationButton extends StatelessWidget {
-  const NotificationButton({
+class SomeActionButton extends StatelessWidget {
+  const SomeActionButton({
     Key? key,
   }) : super(key: key);
 

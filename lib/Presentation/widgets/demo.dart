@@ -1,4 +1,3 @@
-
 import 'package:dev_player_fds/Bloc/AccountBloc/account_bloc.dart';
 import 'package:dev_player_fds/Data/repository/repository.dart';
 import 'package:flutter/material.dart';
@@ -7,17 +6,16 @@ import 'package:dev_player_fds/Data/provider/provider.dart';
 import '../../Data/repository/repository.dart';
 import 'package:http/http.dart' as http;
 
-class Demo extends StatelessWidget {
-  Demo({Key? key}) : super(key: key);
+class Dema extends StatelessWidget {
+  Dema({Key? key}) : super(key: key);
 
-  final repo = AccountRepository(
-      accountDataProvider: AccountDataProvider(httpClient: http.Client()));
+  final repo = AccountRepository();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AccountBloc(RepositoryProvider.of(context))
-        ..add((GetOtherAccounts())),
+      create: (context) => AccountBloc(),
+      // ..add((GetOtherAccounts())),
       child: BlocBuilder<AccountBloc, AccountState>(
         builder: (context, state) {
           if (state is AccountLoading) {
@@ -30,12 +28,12 @@ class Demo extends StatelessWidget {
             ));
           }
           if (state is AccountLoaded) {
-            print(state.user);
+            print(state.user[0].more.dob);
           }
           return Container(
             child: ElevatedButton(
               onPressed: () {
-                BlocProvider.of<AccountBloc>(context).add(GetMyAccount());
+                // BlocProvider.of<AccountBloc>(context).add(GetMyAccount());
               },
               child: const Text('Get My Account'),
             ),

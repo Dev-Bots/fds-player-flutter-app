@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -8,6 +8,7 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final prefs = SharedPreferences.getInstance();
     return Container(
       margin: EdgeInsets.all(10),
       child: Drawer(
@@ -20,17 +21,23 @@ class CustomDrawer extends StatelessWidget {
                 height: 250,
                 child: DrawerHeader(
                   child: Column(
-                    children: const [
+                    children: [
                       CircleAvatar(
                         backgroundImage: AssetImage('assets/images/pic.jpg'),
                         radius: 50,
                       ),
                       SizedBox(height: 25),
-                      Text('John Doe',
+                      Text('nmae',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
                               fontWeight: FontWeight.w500)),
+                      SizedBox(height: 10),
+                      Text('rooney@gmail.com',
+                          style: TextStyle(
+                            color: Colors.grey[500],
+                            fontSize: 15,
+                          )),
                     ],
                   ),
                 ),
@@ -48,7 +55,7 @@ class CustomDrawer extends StatelessWidget {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/home');
               },
             ),
             CustomDivider(),
@@ -60,10 +67,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               title: const Text('Profile'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/profile'); // /login
               },
             ),
             CustomDivider(),
@@ -78,7 +82,7 @@ class CustomDrawer extends StatelessWidget {
                 // Update the state of the app
                 // ...
                 // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, '/attended');
               },
             ),
             CustomDivider(),
